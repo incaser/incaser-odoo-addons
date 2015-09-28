@@ -26,4 +26,4 @@ class WebsiteConfig(osv.osv_memory):
         config = self.browse(cr, uid, ids[0], context=context)
         icp = self.pool.get('ir.config_parameter')
         icp.set_param(cr, uid, 'website_maintenance.disable_website',
-                      repr(config.only_team_user))
+                      repr(config.disable_website))

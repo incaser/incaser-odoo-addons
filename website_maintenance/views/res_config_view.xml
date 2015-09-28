@@ -5,7 +5,7 @@
     <record id="view_config_settings" model="ir.ui.view">
         <field name="name">Website Application</field>
         <field name="model">website.config.settings</field>
-        <field name="inherit_id" ref="website.view_config_settings"/>
+        <field name="inherit_id" ref="website.view_website_config_settings"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='google_analytics_key']" position="after">
                 <label for="disable_website"/>
