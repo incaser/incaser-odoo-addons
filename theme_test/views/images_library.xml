@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+<!-- BACKGROUND IMAGES
+     ========================================================================== -->
+
+		<record id="about-bg" model="ir.attachment">
+			<field name="name">about-bg.jpg</field>
+			<field name="datas_fname">about-bg.jpg</field>
+			<field name="res_model">ir.ui.view</field>
+			<field name="type">url</field>
+			<field name="url">/theme_test/static/src/img/about-bg.jpg</field>
+		</record>
+
+		<record id="contact-bg" model="ir.attachment">
+			<field name="name">contact-bg.jpg</field>
+			<field name="datas_fname">contact-bg.jpg</field>
+			<field name="res_model">ir.ui.view</field>
+			<field name="type">url</field>
+			<field name="url">/theme_test/static/src/img/contact-bg.jpg</field>
+		</record>
+
+		<record id="home-bg" model="ir.attachment">
+			<field name="name">home-bg.jpg</field>
+			<field name="datas_fname">home-bg.jpg</field>
+			<field name="res_model">ir.ui.view</field>
+			<field name="type">url</field>
+			<field name="url">/theme_test/static/src/img/home-bg.jpg</field>
+		</record>
+
+		<record id="post-bg" model="ir.attachment">
+			<field name="name">post-bg.jpg</field>
+			<field name="datas_fname">post-bg.jpg</field>
+			<field name="res_model">ir.ui.view</field>
+			<field name="type">url</field>
+			<field name="url">/theme_test/static/src/img/post-bg.jpg</field>
+		</record>
+
+		<record id="post-sample-image" model="ir.attachment">
+			<field name="name">post-sample-image.jpg</field>
+			<field name="datas_fname">post-sample-image.jpg</field>
+			<field name="res_model">ir.ui.view</field>
+			<field name="type">url</field>
+			<field name="url">/theme_test/static/src/img/post-sample-image.jpg</field>
+		</record>
+
+	</data>
+</openerp>
