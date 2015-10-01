@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!--Filter view-->
+    <record id="id_filter" model="ir.ui.view">
+        <field name="name">name.filter</field>
+        <field name="model">model</field>
+        <field name="arch" type="xml">
+            <search string="String.....">
+               <field name="name"
+                   filter_domain="['|','|',('name','ilike',self),('parent_id','ilike',self),('ref','=',self)]"/>
+                <separator/>
+               <filter string="With Exercise" name="with_exercise" domain="[('work_mode_id.exerts','=',True)]"/>
+               <filter string="Unpaid Invoices" name="credit" domain="[('credit','&gt;',0.0)]"/>
+               <separator/>
+               <field name="inscription_date" string="Inscription Date(>=)" filter_domain="[('inscription_date','&gt;=',self)]"/>
+               <field name="inscription_date" string="Inscription Date(&lt;=)" filter_domain="[('inscription_date','&lt;=',self)]"/>
+               <separator/>
+               <group expand="0" string="Group By...">
+                   <filter string="Move Type" context="{'group_by': 'move_type_id'}"/>
+               </group>
+           </search>
+        </field>
+    </record>
+
+    <!--Inherited view-->
+    <record id="....." model="ir.ui.view">
+        <field name="name">_____._______.______</field>
+        <field name="model">.....</field>
+        <field name="inherit_id" ref="module.id_view"/>
+        <field name="arch" type="xml">
+            <field name="..." position="after">
+                <field name="....."/>
+            </field>
+        </field>
+    </record>
+
+</data>
+</openerp>
