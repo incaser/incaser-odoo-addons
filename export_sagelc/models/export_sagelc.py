@@ -10,10 +10,16 @@ class base_external_dbsource(models.Model):
 
     @api.multi
     def execute_void(self, sqlquery, sqlparams=None, metadata=False):
+        res = False
         for obj in self:
             conn = obj.conn_open(obj.id)
             cur = conn.cursor()
-            res = cur.execute(sqlquery, sqlparams)
-            conn.commit()
-            conn.close()
+            try:
+                res = cur.execute(sqlquery, sqlparams)
+                conn.commit()
+            except Exception as e:
+                print e
+                conn.rollback()
+            finally:
+                conn.close()
         return res

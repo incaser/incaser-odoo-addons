@@ -10,7 +10,8 @@ from openerp.tools.float_utils import float_round
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    sagelc_export = fields.Boolean(string='Exported')
+    sagelc_customer_ref = fields.Char(string='Sage Customer Ref')
+    sagelc_supplier_ref = fields.Char(string='Sage Supplier Ref')
 
     @api.multi
     def export_records(self):
@@ -23,7 +24,7 @@ class ResPartner(models.Model):
                          'SerieAlbaran': '',
                          'NumeroAlbaran': invoice.id,
                          'IdDelegacion': 'CAS',
-                         'CodigoCliente': invoice.partner_id.ref,
+                         'CodigoCliente': invoice.partner_id.sagelc_customer_ref,
                          'FechaAlbaran': invoice.date_invoice,
                          'NumeroLineas': len(invoice.invoice_line),
                          'SiglaNacion': invoice.partner_id.vat[:2],

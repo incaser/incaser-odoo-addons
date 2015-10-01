@@ -26,7 +26,7 @@
         <field name="state">code</field>
         <field name="type">ir.actions.server</field>
         <field name="model_id" ref="model_account_invoice"/>
-        <field name="code">self.export_records(cr, uid, context['active_ids'],context)
+        <field name="code">self.export_records(cr, uid, context['active_ids'],context=context)
         </field>
         <field name="condition">True</field>
         <field name="name">Exports Invoices to Sage</field>

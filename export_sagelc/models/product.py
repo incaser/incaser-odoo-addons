@@ -7,6 +7,8 @@ from openerp import models, fields, api
 from openerp.tools.float_utils import float_round
 
 tipo_articulo = {'product': 'M', 'consu': 'M', 'service': 'I'}
+codigo_empresa = 1
+
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
@@ -19,13 +21,13 @@ class ProductProduct(models.Model):
         db_obj = self.env['base.external.dbsource']
         db_sage = db_obj.search([('name', '=', 'Logic')])
         for product in self.with_context(pricelist=1):
-            product_code = 'od' + str(product.id).zfill(5)
+            product_code = 'OD' + str(product.id).zfill(5)
             dic_equiv = {
-                         'CodigoEmpresa': 0,
-                         'CodigoArticulo': product_code,
+                         'CodigoEmpresa': codigo_empresa,
+                         'CodigoArticulo': product_code or '',
                          'DescripcionArticulo': product.name,
                          'ComentarioArticulo': product.description or '',
-                         'DescripcionLinea': product.description_sale or '',
+                         'DescripcionLinea': product.description_sale and product.description_sale.replace('\n','\r\n') or '',
                          'CodigoAlternativo': product.ean13 or '',
                          'CodigoAlternativo2': product.default_code or '',
                          'TipoArticulo': tipo_articulo[product.type],
