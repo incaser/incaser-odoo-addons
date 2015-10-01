@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <!-- EXPORT PRODUCTS -->
+    <record id="ir_actions_server_export_sagelc_product" model="ir.actions.server">
+        <field name="sequence" eval="5"/>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="code">self.export_records(cr, uid, context['active_ids'],context)
+        </field>
+        <field name="condition">True</field>
+        <field name="name">Exports products to Sage</field>
+    </record>
+
+    <record model="ir.values" id="action_product_product_export_sagelc">
+      <field name="name">Export to Sage</field>
+      <field name="key2">client_action_multi</field>
+      <field name="value" eval="'ir.actions.server,' +str(ref('ir_actions_server_export_sagelc_product'))" />
+      <field name="model">product.product</field>
+    </record>
+
+    <!-- EXPORT INVOICES-->
+    <record id="ir_actions_server_export_sagelc_invoice" model="ir.actions.server">
+        <field name="sequence" eval="5"/>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_account_invoice"/>
+        <field name="code">self.export_records(cr, uid, context['active_ids'],context=context)
+        </field>
+        <field name="condition">True</field>
+        <field name="name">Exports Invoices to Sage</field>
+    </record>
+
+    <record model="ir.values" id="action_account_invoice_export_sagelc">
+      <field name="name">Export to Sage</field>
+      <field name="key2">client_action_multi</field>
+      <field name="value" eval="'ir.actions.server,' +str(ref('ir_actions_server_export_sagelc_invoice'))" />
+      <field name="model">account.invoice</field>
+    </record>
+
+</data>
+</openerp>
