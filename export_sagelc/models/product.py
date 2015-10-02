@@ -13,7 +13,7 @@ codigo_empresa = 1
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    sagelc_export = fields.Boolean(string='Exported')
+    sagelc_export = fields.Boolean(string='Exported', default=False)
     sagelc_code = fields.Char(string='SageLC Code', size=15)
 
     @api.multi

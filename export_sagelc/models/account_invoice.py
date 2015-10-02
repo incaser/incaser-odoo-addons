@@ -14,7 +14,7 @@ codigo_empresa = 1
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    sagelc_export = fields.Boolean(string='Exported')
+    sagelc_export = fields.Boolean(string='Exported', default=False)
     sagelc_code = fields.Char(string='SageLC Code', size=15)
 
     def sanitize_arg(self, val):
