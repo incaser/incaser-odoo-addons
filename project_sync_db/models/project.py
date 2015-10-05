@@ -6,14 +6,14 @@
 from openerp import models, fields
 
 
-class ProjectTaskType(models.Model):
+class Project(models.Model):
     _inherit = 'project.project'
 
     external_project_id = fields.Integer(
         string='External Project ID')
 
 
-class ProjectTaskType(models.Model):
+class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     external_task_id = fields.Integer(
