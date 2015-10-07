@@ -6,7 +6,7 @@
 from openerp import models, fields
 
 
-class Project(models.Model):
+class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     external_project_id = fields.Integer(
@@ -18,3 +18,4 @@ class ProjectTask(models.Model):
 
     external_task_id = fields.Integer(
         string='External Task ID')
+

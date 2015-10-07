@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!-- Remote server views -->
+    <record id="view_database_sync_server_tree" model="ir.ui.view">
+        <field name="name">database.sync.server.tree</field>
+        <field name="model">database.sync.server</field>
+        <field name="arch" type="xml">
+            <tree string="Remote Servers">
+                <field name="name"/>
+                <field name="server_url"/>
+                <field name="server_port"/>
+                <field name="server_db"/>
+                <field name="login"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_database_sync_server_form" model="ir.ui.view">
+        <field name="name">database.sync.server.form</field>
+        <field name="model">database.sync.server</field>
+        <field name="arch" type="xml">
+            <form string="Remote Servers">
+                <sheet>
+                    <group colspan="4" col="4">
+                        <field name="name"/>
+                        <field name="login"/>
+                        <field name="password" password="True"/>
+                        <field name="server_url"/>
+                        <field name="server_port"/>
+                        <field name="server_db"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_database_sync_server" model="ir.actions.act_window">
+        <field name="name">Remote Servers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">database.sync.server</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</data>
+</openerp>

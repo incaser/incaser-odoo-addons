@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <menuitem id="database_sync_conf" name="Models Sync"
+              parent="base.menu_administration"/>
+        <menuitem id="action_database_sync_server"
+                  action="action_database_sync_server"
+                  parent="database_sync.models_sync_conf"/>
+
+</data>
+</openerp>

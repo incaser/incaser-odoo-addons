@@ -4,7 +4,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    'name': 'Project Sync Database',
+    'name': 'Database Synchronization',
     'summary': '.....'
                '.....',
     'version': '8.0.1.0.0',
@@ -15,6 +15,8 @@
     'depends': ['project'],
     'data': [
         'views/project_view.xml',
+        'views/database_sync_view.xml',
+        'views/database_sync_menu.xml',
     ],
     'installable': True,
 }
