@@ -54,7 +54,8 @@
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree string="Server Models">
-                <field name="name"/>
+                <field name="server_id"/>
+                <field name="model_id"/>
                 <field name="field_ids"/>
             </tree>
         </field>
@@ -66,6 +67,8 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Server Models">
+                <field name="server_id"/>
+                <field name="model_id"/>
                 <field name="field_ids"/>
             </form>
         </field>

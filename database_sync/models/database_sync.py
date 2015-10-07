@@ -32,6 +32,9 @@ class DatabaseSyncModel(models.Model):
     name = fields.Char()
     server_id = fields.Many2one(
         comodel_name='database.sync.server', ondelete='restrict')
+    model_id = fields.Many2one(comodel_name='ir.model', string='Model')
+    # field_ids = fields.Many2many(
+    #     comodel_name='ir.model.fields', string='Fields')
     field_ids = fields.One2many(
         comodel_name='database.sync.model.field', inverse_name='model_id',
         string='Fields')
@@ -44,5 +47,7 @@ class DatabaseSyncModelField(models.Model):
     _description = "Fields to sync"
 
     model_id = fields.Many2one(
-        comodel_name='database.sync.model', ondelete='restrict')
+        comodel_name='database.sync.model', string='Model',
+        ondelete='restrict')
+    # field_id = fields.Many2many(comodel_name='ir.model.fields', string='Fields')
     field_id = fields.Many2one(comodel_name='ir.model.fields', string='Fields')
