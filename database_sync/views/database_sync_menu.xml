@@ -2,11 +2,11 @@
 <openerp>
 <data>
 
-    <menuitem id="database_sync_conf" name="Models Sync"
+    <menuitem id="menu_database_sync_conf" name="Database Sync"
               parent="base.menu_administration"/>
-        <menuitem id="action_database_sync_server"
+        <menuitem id="menu_database_sync_server"
                   action="action_database_sync_server"
-                  parent="database_sync.models_sync_conf"/>
+                  parent="database_sync.menu_database_sync_conf"/>
 
 </data>
 </openerp>

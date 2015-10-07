@@ -9,8 +9,8 @@ from openerp import models, fields
 class DatabaseSyncServer(models.Model):
     """Remote servers information"""
 
-    _name = "database.sync.server"
-    _description = "Remote Server"
+    _name = 'database.sync.server'
+    _description = 'Remote Server'
 
     name = fields.Char('Server name', required=True)
     server_url = fields.Char('Server URL', required=True)
@@ -19,23 +19,30 @@ class DatabaseSyncServer(models.Model):
     login = fields.Char('User Name', required=True)
     password = fields.Char('Password', required=True)
     model_ids = fields.One2many(
-        'database.sync.models', 'server_id', string='Models',
-        ondelete='restrict')
+        comodel_name='database.sync.model', inverse_name='server_id',
+        string='Models', ondelete='restrict')
 
 
-class DatabaseSyncModels(models.Model):
+class DatabaseSyncModel(models.Model):
     """Models to sync"""
 
-    _name = "database.sync.server"
-    _description = "Models to sync"
+    _name = 'database.sync.model'
+    _description = 'Models to sync'
 
-    name = fields.Char('Server name', required=True)
-    server_url = fields.Char('Server URL', required=True)
-    server_port = fields.Integer('Server Port', required=True, default=8069)
-    server_db = fields.Char('Server Database', required=True)
-    login = fields.Char('User Name', required=True)
-    password = fields.Char('Password', required=True)
-    model_ids = fields.One2many(
-        'models.sync.models', 'server_id', string='Models',
-        ondelete='restrict')
+    name = fields.Char()
+    server_id = fields.Many2one(
+        comodel_name='database.sync.server', ondelete='restrict')
+    field_ids = fields.One2many(
+        comodel_name='database.sync.model.field', inverse_name='model_id',
+        string='Fields')
 
+
+class DatabaseSyncModelField(models.Model):
+    """Fields Models to sync"""
+
+    _name = 'database.sync.model.field'
+    _description = "Fields to sync"
+
+    model_id = fields.Many2one(
+        comodel_name='database.sync.model', ondelete='restrict')
+    field_id = fields.Many2one(comodel_name='ir.model.fields', string='Fields')
