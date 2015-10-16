@@ -81,7 +81,8 @@ class AccountInvoice(models.Model):
             key_list = dic_equiv.keys()
             params = '?,' * len(dic_equiv)
             params = params[:-1]
-            sql = 'INSERT INTO CabeceraAlbaranCliente (%s) VALUES (%s)' % (', '.join(key_list), params)
+            sql = 'INSERT INTO CabeceraAlbaranCliente (%s) VALUES (%s)' % (
+                ', '.join(key_list), params)
             param_list = tuple([dic_equiv[key] for key in key_list])
             db_sage.execute_void(sql, param_list)
             vals = {'sagelc_export': True}
@@ -97,8 +98,11 @@ class AccountInvoice(models.Model):
                     '[FechaAlbaran]': invoice.date_invoice,
                     '[CodigoArticulo]': line.product_id.sagelc_code,
                     '[CodigoAlmacen]': '1',
-                    '[DescripcionArticulo]': line.product_id.name,
-                    '[DescripcionLinea]': line.name and line.name.replace('\n', '\r\n') or '',
+                    '[DescripcionArticulo]':
+                        line.product_id.name and
+                        line.product_id.name[:40] or '',
+                    '[DescripcionLinea]':
+                        line.name and line.name.replace('\n', '\r\n') or '',
                     '[FactorConversion_]': 1,
                     '[AcumulaEstadistica_]': -1,
                     '[CodigoTransaccion]': 1,
@@ -118,7 +122,8 @@ class AccountInvoice(models.Model):
                 key_list = dic_equiv.keys()
                 params = '?,' * len(dic_equiv)
                 params = params[:-1]
-                sql = 'INSERT INTO LineasAlbaranCliente (%s) VALUES (%s)' % (', '.join(key_list), params)
+                sql = 'INSERT INTO LineasAlbaranCliente (%s) VALUES (%s)' % (
+                    ', '.join(key_list), params)
                 param_list = tuple([dic_equiv[key] for key in key_list])
                 db_sage.execute_void(sql, param_list)
 
