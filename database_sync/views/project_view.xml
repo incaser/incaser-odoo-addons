@@ -22,6 +22,8 @@
             <field name="partner_id" position="after">
                 <newline/>
                 <field name="external_task_id"/>
+                <newline/>
+                <field name="external_task_user_id"/>
             </field>
         </field>
     </record>
