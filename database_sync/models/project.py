@@ -18,6 +18,6 @@ class ProjectTask(models.Model):
 
     external_task_id = fields.Integer(
         string='External Task ID')
-    external_user_id = fields.Integer(
+    external_task_user_id = fields.Integer(
         string='External Task User ID')
 
