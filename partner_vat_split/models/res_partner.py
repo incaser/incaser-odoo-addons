@@ -9,13 +9,31 @@ from openerp import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    vat_country_code = fields.Char(compute='_compute_vat_split')
-    vat_identifier = fields.Char(compute='_compute_vat_split')
+    vat_country_code = fields.Char(size=2)
+    vat_identifier = fields.Char()
 
-    def _compute_vat_split(self):
-        self.vat_country_code = self.vat[:2]
-        self.vat_identifier = self.vat[2:]
+    # @api.onchange('vat')
+    # def _compute_vat_split(self):
+    #     for partner in self:
+    #         if partner.vat:
+    #             partner.vat_country_code = partner.vat[:2]
+    #             partner.vat_identifier = partner.vat[2:]
 
     @api.onchange('vat_country_code', 'vat_identifier')
     def _onchange_vat_split(self):
-        self.vat = '%s%s' % (self.vat_country_code, self.vat_identifier)
+        for partner in self:
+            if partner.vat_country_code:
+                partner.vat = '%s%s' % (
+                    partner.vat_country_code, partner.vat_identifier)
+
+    @api.multi
+    def vat_change(self, value):
+        res = super(ResPartner, self).vat_change(value)
+        if value:
+            res['vat_country_code'] = value[:2]
+            res['vat_identifier'] = value[2:]
+        # for partner in self:
+        #     if partner.vat:
+        #         partner.vat_country_code = partner.vat[:2]
+        #         partner.vat_identifier = partner.vat[2:]
+        return res
