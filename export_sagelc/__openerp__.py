@@ -16,6 +16,7 @@
         'views/export_view.xml',
         'views/product_view.xml',
         'views/res_partner_view.xml',
+        'views/account_invoice_view.xml',
     ],
     'installable': True,
 }
