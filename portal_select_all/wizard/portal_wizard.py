@@ -6,7 +6,7 @@
 from openerp import api, fields, models
 
 
-class PortalWizard(models.AbstractModel):
+class PortalWizard(models.TransientModel):
     _inherit = 'portal.wizard'
 
     select_all = fields.Boolean()
