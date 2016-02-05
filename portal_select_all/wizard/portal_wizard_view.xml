@@ -11,7 +11,7 @@
                     <group>
                         <field name="select_all"/>
                     </group>
-                    <field name="modified" invisible="1"/>
+                    <field name="rec_modified" invisible="1"/>
                 </field>
             </field>
         </record>

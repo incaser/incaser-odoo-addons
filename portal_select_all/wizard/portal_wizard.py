@@ -10,12 +10,12 @@ class PortalWizard(models.TransientModel):
     _inherit = 'portal.wizard'
 
     select_all = fields.Boolean()
-    modified = fields.Boolean()
+    rec_modified = fields.Boolean()
 
     @api.onchange('select_all')
     def _onchange_select_all(self):
-        # The variable modified avoids that all records set false at load view
-        if self.modified:
+        # The variable modified_x avoids that all records set false at load view
+        if self.rec_modified:
             for user in self.user_ids:
                 user.in_portal = self.select_all
-        self.modified = True
+        self.rec_modified = True
