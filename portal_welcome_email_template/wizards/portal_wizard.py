@@ -37,7 +37,7 @@ class WizardUser(models.TransientModel):
         user.partner_id.with_context(context).signup_prepare()
 
         template = self.env.ref(
-            'portal_welcome_email.portal_welcome_email_template')
+            'portal_welcome_email_template.portal_welcome_email')
         ctx = this_context.copy()
         ctx.update({
             'login': user.login,
