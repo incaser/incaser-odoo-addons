@@ -12,7 +12,9 @@
               'Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'depends': ['portal'],
-    'data': [],
+    'data': [
+        'data/portal_welcome_email_data.xml',
+    ],
     'images': [],
     'installable': True,
 }

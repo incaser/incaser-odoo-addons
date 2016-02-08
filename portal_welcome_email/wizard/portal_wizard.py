@@ -6,25 +6,6 @@
 from openerp import models, api
 from openerp import exceptions
 from openerp.tools.translate import _
-# from openerp.addons.portal.wizard import portal_wizard
-
-# welcome email sent to portal users
-WELCOME_EMAIL_SUBJECT = _("Your account at %(company)s")
-WELCOME_EMAIL_BODY = _("""Dear %(name)s,
-
-You have been given access to %(company)s's %(portal)s.
-
-Your login account data is:
-  Username: %(login)s
-  Portal: %(portal_url)s
-  Database: %(db)s
-
-You can set or change your password via the following url:
-   %(signup_url)s
-
-%(welcome_message)s
-
-""")
 
 
 class WizardUser(models.TransientModel):
@@ -39,39 +20,33 @@ class WizardUser(models.TransientModel):
             @param wizard_user: browse record of model portal.wizard.user
             @return: the id of the created mail.mail record
         """
-        res_partner = self.env['res.partner']
         this_context = self._context
         this_user = self.env['res.users'].sudo().browse(self._uid)
         if not this_user.email:
-            raise exceptions.Warning(_('Email Required'),
-                _('You must have an email address in your User Preferences to send emails.'))
+            raise exceptions.Warning(
+                _('Email Required'),
+                _('You must have an email address in your User Preferences to '
+                  'send emails.'))
 
         # determine subject and body in the portal user's language
         user = self.sudo()._retrieve_user(wizard_user)
         context = dict(this_context or {}, lang=user.lang)
         ctx_portal_url = dict(context, signup_force_type_in_url='')
-        portal_url = user.with_context(ctx_portal_url)._get_signup_url_for_action()[user.partner_id.id]
-        # portal_url = res_partner.with_context(ctx_portal_url)._get_signup_url_for_action(ids=[user.partner_id.id])[user.partner_id.id]
-        user.with_context(context).signup_prepare()
+        portal_url = user.partner_id.with_context(
+            ctx_portal_url)._get_signup_url_for_action()[user.partner_id.id]
+        user.partner_id.with_context(context).signup_prepare()
 
-        data = {
-            'company': this_user.company_id.name,
-            'portal': wizard_user.wizard_id.portal_id.name,
-            'welcome_message': wizard_user.wizard_id.welcome_message or "",
-            'db': self._cr.dbname,
-            'name': user.name,
+        template = self.env.ref(
+            'portal_welcome_email.portal_welcome_email_template')
+        ctx = this_context.copy()
+        ctx.update({
             'login': user.login,
-            'signup_url': user.signup_url,
             'portal_url': portal_url,
-        }
-        mail_mail = self.env['mail.mail']
-        mail_values = {
-            'email_from': this_user.email,
-            'email_to': user.email,
-            'subject': _(WELCOME_EMAIL_SUBJECT) % data,
-            'body_html': '<pre>%s</pre>' % (_(WELCOME_EMAIL_BODY) % data),
-            'state': 'outgoing',
-            'type': 'email',
-        }
-        mail_id = mail_mail.with_context(this_context).create(mail_values)
-        return mail_mail.with_context(this_context).send([mail_id])
+            'db': self._cr.dbname,
+            'portal': wizard_user.wizard_id.portal_id.name,
+            'signup_url': user.signup_url,
+            'welcome_message': wizard_user.wizard_id.welcome_message or "",
+        })
+        result = template.with_context(ctx).generate_email_batch(
+            template.id, [user.id])[user.id]
+        return self.env['mail.mail'].with_context(this_context).create(result)
