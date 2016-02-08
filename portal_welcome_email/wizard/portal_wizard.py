@@ -50,8 +50,9 @@ class WizardUser(models.TransientModel):
         user = self.sudo()._retrieve_user(wizard_user)
         context = dict(this_context or {}, lang=user.lang)
         ctx_portal_url = dict(context, signup_force_type_in_url='')
-        portal_url = res_partner.with_context(ctx_portal_url)._get_signup_url_for_action(ids=[user.partner_id.id])[user.partner_id.id]
-        res_partner.with_context(context).signup_prepare([user.partner_id.id])
+        portal_url = user.with_context(ctx_portal_url)._get_signup_url_for_action()[user.partner_id.id]
+        # portal_url = res_partner.with_context(ctx_portal_url)._get_signup_url_for_action(ids=[user.partner_id.id])[user.partner_id.id]
+        user.with_context(context).signup_prepare()
 
         data = {
             'company': this_user.company_id.name,
