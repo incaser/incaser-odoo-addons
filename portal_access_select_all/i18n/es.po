@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* portal_select_all
+# 	* portal_access_select_all
 #
 msgid ""
 msgstr ""
@@ -16,17 +16,17 @@ msgstr ""
 "Language: es_ES\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#. module: portal_select_all
-#: model:ir.model,name:portal_select_all.model_portal_wizard
+#. module: portal_access_select_all
+#: model:ir.model,name:portal_access_select_all.model_portal_wizard
 msgid "Portal Access Management"
 msgstr "Administración de acceso al portal"
 
-#. module: portal_select_all
+#. module: portal_access_select_all
 #: field:portal.wizard,rec_modified:0
 msgid "Rec modified"
 msgstr "Registro modificado"
 
-#. module: portal_select_all
+#. module: portal_access_select_all
 #: field:portal.wizard,select_all:0
 msgid "Select all"
 msgstr "Marcar todos"
