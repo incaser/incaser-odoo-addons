@@ -17,6 +17,15 @@ To modify the email sent go to *Settings > Email > Email Template* and search
 'Portal Welcome Email'. You can rewrite the template.
 Variables are stored into ctx, example: *ctx['portal_url']*
 
+Variables list:
+
+* ctx['login']
+* ctx['portal_url']
+* ctx['db']
+* ctx['portal']
+* ctx['signup_url']
+* ctx['welcome_message']
+
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
