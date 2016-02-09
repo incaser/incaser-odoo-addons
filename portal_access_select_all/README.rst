@@ -2,49 +2,31 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=============================
-Portal Welcome Email Template
-=============================
+========================
+Portal Access Select All
+========================
 
-This module extends the functionality of portal module to allow customize the
-email message sent to customer in email template section.
-The email sent is sent to queue.
+This module extends the functionality of portal module to allow select all
+users in portal access management wizard
 
 Usage
 =====
 
-To modify the email sent go to *Settings > Email > Email Template* and search
-'Portal Welcome Email'. You can rewrite the template.
-Variables are stored into ctx, example: *ctx['portal_url']*
-
-Variables list:
-
-* ctx['login']
-* ctx['portal_url']
-* ctx['db']
-* ctx['portal']
-* ctx['signup_url']
-* ctx['welcome_message']
-
-
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
+   :target: https://runbot.odoo-community.org/runbot/149/8.0
 
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/{project_repo}/issues>`_. In case of trouble, please
+<https://github.com/OCA/server-tools/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed `feedback
 <https://github.com/OCA/
 {project_repo}/issues/new?body=module:%20
-{module_name}%0Aversion:%20
-{branch}%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+portal_access_select_all%0Aversion:%20
+8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Credits
 =======
