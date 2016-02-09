@@ -2,33 +2,21 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-==============
-{module_title}
-==============
+=============================
+Portal Welcome Email Template
+=============================
 
-This module extends the functionality of ... to support ...
-and allow you to ...
-
-Installation
-============
-
-To install this module, you need to:
-
-* Do this ...
-
-Configuration
-=============
-
-To configure this module, you need to:
-
-* Go to ...
+This module extends the functionality of portal module to allow customize the
+email message sent to customer in email template section.
+The email sent is sent to queue.
 
 Usage
 =====
 
-To use this module, you need to:
+To modify the email sent go to *Settings > Email > Email Template* and search
+'Portal Welcome Email'. You can rewrite the template.
+Variables are stored into ctx, example: *ctx['portal_url']*
 
-* Go to ...
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -36,11 +24,6 @@ To use this module, you need to:
 
 .. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
 .. branch is "8.0" for example
-
-Known issues / Roadmap
-======================
-
-* ...
 
 Bug Tracker
 ===========
@@ -65,8 +48,8 @@ Images
 Contributors
 ------------
 
-* Firstname Lastname <email.address@example.org>
-* Second Person <second.person@example.org>
+* Carlos Dauden <carlos@incaser.es>
+* Sergio Teruel <sergio@incaser.es>
 
 Maintainer
 ----------

@@ -29,7 +29,7 @@
 <br/>
 You can set or change your password via the following url:<br/>
 ${ctx['signup_url']}<br/>
-
+<p>${ctx['welcome_message']}</p>
 <pre>
 --
 Automatic Email.
