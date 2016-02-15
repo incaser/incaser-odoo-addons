@@ -14,7 +14,7 @@ class PortalWizard(models.TransientModel):
 
     @api.onchange('select_all')
     def _onchange_select_all(self):
-        # The variable modified_x avoids that all records set false at load view
+        # The variable modified avoids that all records set false at load view
         if self.rec_modified:
             for user in self.user_ids:
                 user.in_portal = self.select_all

@@ -5,9 +5,9 @@
 
 {
     'name': 'Portal Access Select All',
-    'summary': 'This module allows select all users in portal wizard',
+    'summary': 'Select all users in portal access management wizard',
     'version': '8.0.1.0.0',
-    'category': 'Tools',
+    'category': 'Portal',
     "website": "https://odoo-community.org/",
     'author': 'Incaser Informatica S.L., '
               'Odoo Community Association (OCA)',
