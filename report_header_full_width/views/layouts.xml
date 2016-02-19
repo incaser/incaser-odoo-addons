@@ -4,7 +4,8 @@
 
 <template id="external_layout_header"
           inherit_id="report.external_layout_header">
-    <xpath expr="//div[@t-field='company.partner_id']/.." position="attributes">
+    <xpath expr="//div[@t-field='company.partner_id']/.."
+           position="attributes">
         <attribute name="class">col-xs-6</attribute>
     </xpath>
 </template>

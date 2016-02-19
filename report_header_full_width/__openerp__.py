@@ -12,10 +12,12 @@
     'license': 'AGPL-3',
     'website': 'http://www.incaser.es',
     'category': 'Tools',
-    'depends': ['report'],
+    'depends': [
+        'report',
+    ],
     'data': [
-            'views/layouts.xml',
-             ],
+        'views/layouts.xml',
+    ],
     'images': [],
     'installable': True,
 }
