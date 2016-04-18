@@ -9,21 +9,19 @@ from openerp.tests.common import TransactionCase
 class TestStockLotScrap(TransactionCase):
     def setUp(self):
         super(TestStockLotScrap, self).setUp()
-        # stock.production.lot
-
         self.product = self.env.ref('product.product_product_36')
         self.lot010 = self.env['stock.production.lot'].create(
             {
                 'name': "0000010",
                 'product_id': self.product.id
             })
-        self.quant = self.env['stock.quant'].create({
+        self.quant1 = self.env['stock.quant'].create({
             'qty': 5000.0,
             'location_id': self.env.ref('stock.stock_location_stock').id,
             'product_id': self.product.id,
             'lot_id': self.lot010.id,
         })
-        self.quant = self.env['stock.quant'].create({
+        self.quant2 = self.env['stock.quant'].create({
             'qty': 325.0,
             'location_id': self.env.ref('stock.stock_location_stock').id,
             'product_id': self.product.id,
