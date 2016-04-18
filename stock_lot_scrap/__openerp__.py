@@ -4,6 +4,8 @@
 
 {
     'name': 'Scrap Production Lot',
+    'summary': 'This module adds a button in Production Lot/Serial Number '
+               'view form to Scrap all products contained.',
     'version': '8.0.1.0.0',
     'category': 'Stock',
     'license': 'AGPL-3',

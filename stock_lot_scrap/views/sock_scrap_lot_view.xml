@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@class='oe_button_box oe_right']" position="before">
                 <header>
-                    <button name="scrap_lot" string="Scrap"/>
+                    <button name="action_scrap_lot" string="Scrap" type="object"/>
                 </header>
             </xpath>
         </field>

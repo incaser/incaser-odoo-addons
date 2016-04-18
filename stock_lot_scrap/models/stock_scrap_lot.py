@@ -17,25 +17,29 @@ class StockProductionLot(models.Model):
         move_obj = self.env['stock.move']
         product = quant.product_id
         res = move_obj.onchange_product_id(
-            prod_id=product.id, loc_id=quant.location_id,
-            loc_dest_id=strap_location_id)
+            prod_id=product.id, loc_id=quant.location_id.id,
+            loc_dest_id=strap_location_id)['value']
         res.update(move_obj.onchange_quantity(
-            product.id, quant.qty, res['product_uom'], res['product_uos']))
+            product.id, quant.qty, res['product_uom'], res['product_uos']
+        )['value'])
         res.update({
+            'product_id': product.id,
+            'product_uom_qty': quant.qty,
             'picking_id': picking.id,
             'scrapped': True,
         })
         return res
 
     @api.multi
-    def scrap_lot(self):
+    def action_scrap_lot(self):
         self.ensure_one()
         if not self.quant_ids:
             raise Warning(_('Product list must be defined.'))
         move_obj = self.env['stock.move']
         strap_location_id = self.env.ref('stock.stock_location_scrapped').id
-        picking = self.env('stock.picking').create({
+        picking = self.env['stock.picking'].create({
             'origin': 'Lot: %s' % self.name,
+            'picking_type_id': self.env.ref('stock.picking_type_internal').id,
         })
         for quant in self.quant_ids:
             move = move_obj.create(self._prepare_move_vals(
